@@ -4,7 +4,7 @@ A collection of utility scripts for Aseprite to enhance your pixel art workflow.
 
 ## Scripts
 
-### Toggle Visibility
+### Toggle Visibility of All Layers
 
 Toggles visibility of all layers in the active sprite. If any layer is visible, all layers will be hidden. If all layers are hidden, all layers will be shown.
 
