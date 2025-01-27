@@ -25,7 +25,7 @@ Exports layers and grouped layers from the active sprite to separate PNG files, 
 
 ## Usage
 
-### Toggle Visibility
+### Toggle Visibility of All Layers
 1. Open your sprite in Aseprite
 2. Go to File > Scripts > Toggle Visibility
 3. All layers will toggle their visibility state
