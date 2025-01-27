@@ -4,13 +4,17 @@ A collection of utility scripts for Aseprite to enhance your pixel art workflow.
 
 ## Scripts
 
-### Toggle Visibility of all Layers
+### Toggle Visibility
 
 Toggles visibility of all layers in the active sprite. If any layer is visible, all layers will be hidden. If all layers are hidden, all layers will be shown.
 
 ### Import Sprite Sheet to Layers
 
 Imports a sprite sheet and splits it into individual layers based on provided sprite dimensions. Each sprite from the sheet will be placed on its own layer.
+
+### Export All Layers Individually
+
+Exports layers and grouped layers from the active sprite to separate PNG files, organizing them in directories based on their group names. Each layer within a group is exported as an individual PNG file.
 
 ## Installation
 
@@ -32,6 +36,12 @@ Imports a sprite sheet and splits it into individual layers based on provided sp
 3. Select your sprite sheet file when prompted
 4. Enter the width and height of individual sprites in the sheet
 5. The script will create new layers, each containing one sprite from the sheet
+
+### Export All Layers Individually
+1. Open your sprite with layers in Aseprite
+2. Edit the script to set your desired export directory
+3. Go to File > Scripts > Layer Export
+4. The script will create directories for each group and export individual layers as PNGs
 
 ## Contributing
 
