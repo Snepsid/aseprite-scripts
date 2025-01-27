@@ -1,3 +1,9 @@
+-- Layer Export Script for Aseprite
+-- Author: Snepsid
+-- Version: 1.0.0
+-- Description: Exports grouped layers to separate PNG files
+-- License: CC0 1.0 Universal
+
 local sprite = app.activeSprite
 if not sprite then
     app.alert("No active sprite")
@@ -6,7 +12,7 @@ end
 
 -- Function to select the output directory (manually change the path below)
 local function selectDirectory()
-    return "C:/export" -- Change this path
+    return "YOUR_EXPORT_PATH_HERE" -- Change this path
 end
 
 -- Function to create a directory, handling spaces and special characters
