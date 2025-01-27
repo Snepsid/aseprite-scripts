@@ -1,0 +1,24 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Lua compiled files
+*.lua_compiled
+luac.out
+
+# Backup files
+*.bak
+*.backup
+*_backup
+*.old
