@@ -12,13 +12,13 @@ end
 
 -- Function to select the output directory (manually change the path below)
 local function selectDirectory()
-    return "YOUR_EXPORT_PATH_HERE" -- Change this path
+    return (os.getenv("HOME") or "") .. "/aseprite_export"
 end
 
 -- Function to create a directory, handling spaces and special characters
 local function createDirectory(path)
     -- Ensure the path is enclosed in quotes to handle spaces and special characters
-    local mkdirCommand = 'mkdir "' .. path:gsub('"', '\\"') .. '"'
+    local mkdirCommand = 'mkdir -p "' .. path:gsub('"', '\\"') .. '"'
     os.execute(mkdirCommand)
 end
 
@@ -33,24 +33,32 @@ local function exportLayer(layer, path)
     image:saveAs(fullPath)
 end
 
--- Main process
-local outputDir = selectDirectory()
-
-for i, layer in ipairs(sprite.layers) do
+local function processLayer(layer, path)
     if layer.isGroup then
         -- Replace any non-alphanumeric character with an underscore for the directory name
         local safeGroupName = layer.name:gsub("%W", "_")
-        local groupPath = outputDir .. "/" .. safeGroupName
+        local groupPath = path .. "/" .. safeGroupName
         createDirectory(groupPath)
-        for j, innerLayer in ipairs(layer.layers) do
-            if not innerLayer.isGroup then
-                local success, err = pcall(exportLayer, innerLayer, groupPath)
-                if not success then
-                    app.alert("Failed to export layer " .. innerLayer.name .. ": " .. tostring(err))
-                end
-            end
+
+        for i, innerLayer in ipairs(layer.layers) do
+            processLayer(innerLayer, groupPath)
         end
+
+        return
     end
+
+    local success, err = pcall(exportLayer, layer, path)
+    if not success then
+        app.alert("Failed to export layer " .. layer.name .. ": " .. tostring(err))
+    end
+end
+
+-- Main process
+local outputDir = selectDirectory()
+createDirectory(outputDir)
+
+for i, layer in ipairs(sprite.layers) do
+    processLayer(layer, outputDir)
 end
 
 app.alert("Export complete!")
